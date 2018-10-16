@@ -18,10 +18,10 @@ public enum WeaponType
 public class WeaponDefinition
 {
     public WeaponType type = WeaponType.none;
-    public string letter;
-    public Color color = Color.white;
+    public string    letter;
+    public Color     color = Color.white;
     public GameObject projectilePrefab;
-    public Color projectileColor = Color.white;
+    public Color       projectileColor = Color.white;
     public float damageOnHit = 0;
     public float continuousDamage = 0;
     public float delayBetweenShots;
