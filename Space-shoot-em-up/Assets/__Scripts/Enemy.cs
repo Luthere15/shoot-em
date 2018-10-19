@@ -26,21 +26,21 @@ public class Enemy : MonoBehaviour
             this.transform.position = value;
         }
     }
-	
-	
-	// Update is called once per frame
-	void Update ()
+
+
+    // Update is called once per frame
+    void Update()
     {
         Move();
 
-        if(bndCheck != null && bndCheck.offDown)
+        if (bndCheck != null && bndCheck.offDown)
         {
-            
-            
-                Destroy(gameObject);
-            
+
+
+            Destroy(gameObject);
+
         }
-	}
+    }
     public virtual void Move()
     {
         Vector3 tempPos = pos;
@@ -51,14 +51,28 @@ public class Enemy : MonoBehaviour
     void OnCollisionEnter(Collision coll)
     {
         GameObject otherGO = coll.gameObject;
-        if(otherGO.tag == "ProjectileHero")
+        switch (otherGO.tag)
         {
-            Destroy(otherGO);
-            Destroy(gameObject);
+            case "ProjectileHero":
+                Projectile p = otherGO.GetComponent<Projectile>();
+
+                if (!bndCheck.isOnScreen)
+                {
+                    Destroy(otherGO);
+                    break;
+                }
+                health -= Main.GetWeaponDefinition(p.type).damageOnHit;
+                if (health <= 0)
+                {
+                    Destroy(this.gameObject);
+                }
+                Destroy(otherGO);
+                break;
+
+            default:
+                print("enemy hit by non-projectileHero: " + otherGO.name);
+                break;
         }
-        else
-        {
-            print("Enemy hit by non-Projectile: " + otherGO.name);
-        }
+
     }
 }
