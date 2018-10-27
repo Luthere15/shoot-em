@@ -10,7 +10,7 @@ public enum WeaponType
     phaser,
     missile,
     laser,
-    sheild,
+    shield,
 
 }
 
