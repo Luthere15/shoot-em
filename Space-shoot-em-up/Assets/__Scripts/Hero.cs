@@ -94,7 +94,7 @@ public class Hero : MonoBehaviour
         }
         else if(go.tag == "PowerUp")
         {
-            AbsorbPowerUp(go);
+            AbsorbPowerup(go);
         }
         else
         {

@@ -26,7 +26,12 @@ public class Main : MonoBehaviour
         if(Random.value<=e.powerUpdropChance)
         {
             int ndx = Random.Range(0, powerUpFrequency.Length);
-            WeaponType puType = PowerUpFrequency[ndx];
+            WeaponType puType = powerUpFrequency[ndx];
+            GameObject go = Instantiate(prefabPowerUp) as GameObject;
+            PowerUp pu = go.GetComponent<PowerUp>();
+            pu.SetType(puType);
+
+            pu.transform.position = e.transform.position;
         }
     }
 

@@ -11,6 +11,7 @@ public enum WeaponType
     missile,
     laser,
     shield,
+    Powerup,
 
 }
 
